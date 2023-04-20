@@ -1,38 +1,40 @@
 #title {
-color: rgb(140, 0, 255);
-text-align: center;
+  color: rgb(140, 0, 255);
+  text-align: center;
 }
-#color-palette {
-}
+
 #corUm {
-display: inline-block;
-width: 100px;
-height: 100px;
-background-color: black;
-margin: 10px;
-border: 1px solid;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  margin: 10px;
+  border: 1px solid;
 }
+
 #corDois {
-display: inline-block;
-width: 100px;
-height: 100px;
-background-color: red;
-margin: 10px;
-border: 1px solid;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin: 10px;
+  border: 1px solid;
 }
+
 #corTres {
-display: inline-block;
-width: 100px;
-height: 100px;
-background-color: blue;
-margin: 10px;
-border: 1px solid;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  margin: 10px;
+  border: 1px solid;
 }
+
 #corQuatro {
-display: inline-block;
-width: 100px;
-height: 100px;
-background-color: green;
-margin: 10px;
-border: 1px solid;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  margin: 10px;
+  border: 1px solid;
 }
