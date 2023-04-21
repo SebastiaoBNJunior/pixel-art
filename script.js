@@ -15,6 +15,9 @@ buttonRandomColor.addEventListener('click', function() {
   const randomColor2 = '#' + Math.floor(Math.random()*16777215).toString(16);
   const randomColor3 = '#' + Math.floor(Math.random()*16777215).toString(16);
 
+  const colorPalette = [randomColor1, randomColor2, randomColor3];
+localStorage.setItem('colorPalette', colorPalette);
+
   const cor1 = document.querySelector('#corDois');
   const cor2 = document.querySelector('#corTres');
   const cor3 = document.querySelector('#corQuatro');
@@ -23,3 +26,18 @@ buttonRandomColor.addEventListener('click', function() {
   cor2.style.backgroundColor = randomColor2;
   cor3.style.backgroundColor = randomColor3;
 });
+
+function updateColorPalette() {
+  const colorPalette = localStorage.getItem('colorPalette');
+  if (colorPalette) {
+    const colors = colorPalette.split(',');
+    const cor1 = document.querySelector('#corDois');
+    const cor2 = document.querySelector('#corTres');
+    const cor3 = document.querySelector('#corQuatro');
+    cor1.style.backgroundColor = colors[0];
+    cor2.style.backgroundColor = colors[1];
+    cor3.style.backgroundColor = colors[2];
+  }
+}
+
+window.addEventListener('load', updateColorPalette);
