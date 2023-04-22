@@ -41,3 +41,17 @@ function updateColorPalette() {
 }
 
 window.addEventListener('load', updateColorPalette);
+
+document.querySelector('#corUm').classList.add('selected');
+
+//requisito 9
+const paletaCores = document.querySelectorAll('.color');
+paletaCores.forEach((cor) => {
+  cor.addEventListener('click', () => {
+    // código para selecionar a cor clicada
+    paletaCores.forEach((c) => {
+      c.classList.remove('selected');
+    });
+    cor.classList.add('selected');
+  });
+});
