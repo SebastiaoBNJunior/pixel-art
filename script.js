@@ -1,14 +1,17 @@
-const buttonRandomColor = document.querySelector('#button-random-color');
+function testandoPintarCor(){
+  const colorido4 = document.querySelector('#corUm');
+  const colorido1 = document.querySelector('#corDois');
+     const colorido2 = document.querySelector('#corTres');
+     const colorido3 = document.querySelector('#corQuatro');
+     colorido1.style.backgroundColor = 'red';
+     colorido2.style.backgroundColor = 'blue';
+     colorido3.style.backgroundColor = 'green';
+     colorido4.style.backgroundColor = 'black';
+ } 
+ window.addEventListener('load', testandoPintarCor);
 
-// function generateColor() {//Função para gerar os números aleatórios das cores
-//     const letters = '0123456789ABCDEF';
-//     let color = '#';   
-//     for (let i = 0; i < 6; i++) {
-//       color += letters[Math.floor(Math.random() * 16)];
-//     }    
-//     return color;   
-//   }
-// console.log(generateColor()) // Exibe o resultado das cores aleatórias
+
+const buttonRandomColor = document.querySelector('#button-random-color');
 
 buttonRandomColor.addEventListener('click', function() {
   const randomColor1 = '#' + Math.floor(Math.random()*16777215).toString(16);
@@ -27,6 +30,7 @@ localStorage.setItem('colorPalette', colorPalette);
   cor3.style.backgroundColor = randomColor3;
 });
 
+
 function updateColorPalette() {
   const colorPalette = localStorage.getItem('colorPalette');
   if (colorPalette) {
@@ -39,7 +43,6 @@ function updateColorPalette() {
     cor3.style.backgroundColor = colors[2];
   }
 }
-
 window.addEventListener('load', updateColorPalette);
 
 document.querySelector('#corUm').classList.add('selected');
@@ -48,10 +51,17 @@ document.querySelector('#corUm').classList.add('selected');
 const paletaCores = document.querySelectorAll('.color');
 paletaCores.forEach((cor) => {
   cor.addEventListener('click', () => {
-    // código para selecionar a cor clicada
     paletaCores.forEach((c) => {
       c.classList.remove('selected');
     });
     cor.classList.add('selected');
   });
 });
+//  Requisito 10
+// function setPixelColour(pixel) {
+//   pixel.style.backgroundColor = 'black';
+// }
+function setPixelColour(pixel) {
+  pixel.style.backgroundColor = document.querySelector('.selected').style.backgroundColor;
+}
+
