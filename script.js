@@ -10,7 +10,6 @@ function testandoPintarCor(){
  } 
  window.addEventListener('load', testandoPintarCor);
 
-
 const buttonRandomColor = document.querySelector('#button-random-color');
 
 buttonRandomColor.addEventListener('click', function() {
@@ -29,7 +28,6 @@ localStorage.setItem('colorPalette', colorPalette);
   cor2.style.backgroundColor = randomColor2;
   cor3.style.backgroundColor = randomColor3;
 });
-
 
 function updateColorPalette() {
   const colorPalette = localStorage.getItem('colorPalette');
@@ -57,11 +55,14 @@ paletaCores.forEach((cor) => {
     cor.classList.add('selected');
   });
 });
-//  Requisito 10
-// function setPixelColour(pixel) {
-//   pixel.style.backgroundColor = 'black';
-// }
+//requisito 10
 function setPixelColour(pixel) {
   pixel.style.backgroundColor = document.querySelector('.selected').style.backgroundColor;
 }
-
+//requisito 11
+function buttonClearColor() {
+ const buttonClean = document.querySelectorAll('.pixel');
+   for( i = 0; i < buttonClean.length;i++){
+    buttonClean[i].style.backgroundColor = 'white';
+  }
+}
