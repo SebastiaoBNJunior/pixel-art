@@ -1,6 +1,6 @@
 function testandoPintarCor(){
-  const colorido4 = document.querySelector('#corUm');
-  const colorido1 = document.querySelector('#corDois');
+     const colorido4 = document.querySelector('#corUm');
+     const colorido1 = document.querySelector('#corDois');
      const colorido2 = document.querySelector('#corTres');
      const colorido3 = document.querySelector('#corQuatro');
      colorido1.style.backgroundColor = 'red';
@@ -62,7 +62,29 @@ function setPixelColour(pixel) {
 //requisito 11
 function buttonClearColor() {
  const buttonClean = document.querySelectorAll('.pixel');
-   for( i = 0; i < buttonClean.length;i++){
+   for( i = 0; i < buttonClean.length; i++){
     buttonClean[i].style.backgroundColor = 'white';
   }
 }
+//requisito 12
+function savePixelBoard() {
+  const pixelBoard = [];
+  const pixels = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixels.length; i++) {
+    pixelBoard.push(pixels[i].style.backgroundColor);
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(pixelBoard));
+}
+
+function restorePixelBoard() {
+  const pixelBoard = JSON.parse(localStorage.getItem('pixelBoard'));
+  if (pixelBoard) {
+    const pixels = document.querySelectorAll('.pixel');
+    for (let i = 0; i < pixels.length; i++) {
+      pixels[i].style.backgroundColor = pixelBoard[i];
+    }
+  }
+}
+window.addEventListener('beforeunload', savePixelBoard);
+window.addEventListener('load', restorePixelBoard);
+
