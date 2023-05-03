@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +15,20 @@
         <div class="color" id="corTres"></div>
         <div class="color" id="corQuatro"></div>
     </div>
+    <br></br>
     <div>
         <button id="button-random-color" class="button">Cores aleatórias</button>
         <button id="clear-board" class="button" onclick="buttonClearColor()">Limpar</button>
     </div>
+    <br></br>
+    <div>
+        <button id="generate-board" class="button">VQV</button>
+<form>
+    <label for="board-size"></label>
+    <input type="number" id="board-size" name="bsize">
+</form>
+    </div>
+    <br></br>
     <div id="pixel-board">
         <div class="row">
             <div class="pixel" onclick="setPixelColour(this)"></div>
