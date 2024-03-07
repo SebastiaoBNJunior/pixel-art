@@ -55,7 +55,7 @@ _Give me feedbacks, I'm open to new ideas_ 😉
 
 ## 💻 Home Page
 
-![homepage](homepage.png)
+![homepage](homepage.gif)
 <!-- <p align="center">
   <img
     src="https://media.discordapp.net/attachments/1062029691860566078/1070676625664004106/pixels-art.gif"
