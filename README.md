@@ -9,7 +9,6 @@ In this project, I implemented a pixel art editor where the user can choose a co
 What was used to develop:
 HTML, CSS, DOM, Events in JavaScript, Manipulate objects in localStorage
 
-<!-- Regular deadline: November 16, 2022 at 2:00 pm -->
 
 ## 👨‍💻 Language and Technologies used
 
