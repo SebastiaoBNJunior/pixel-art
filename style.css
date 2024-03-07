@@ -1,102 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap') ;
+
 body {
   margin: 0;
   width: 100%;
   height: 100%;
 
   /* Obs.: The image in the background isn't mine.  */
-  background-image: url(backgroundanimated.gif);
+  background-image: url(backgroundanimated2.gif);
   background-size: cover;
 }
 
-.boxcenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  border: 1px solid red;
-
-}
-
 #title {
-  color: rgb(140, 0, 255);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 40px;
+  color: white;
   text-align: center;
 }
 
 #headerParagraph {
-  color: rgb(140, 0, 255);
-  text-align: center;
-}
-
-#corUm {
-  display: inline-block;
-  width: 75px;
-  height: 75px;
-  background-color: black;
-  margin: 10px;
-  border: 1px solid;
-}
-
-#corDois {
-  display: inline-block;
-  width: 75px;
-  height: 75px;
-  background-color: red;
-  margin: 10px;
-  border: 1px solid;
-}
-
-#corTres {
-  display: inline-block;
-  width: 75px;
-  height: 75px;
-  background-color: blue;
-  margin: 10px;
-  border: 1px solid;
-}
-
-#corQuatro {
-  display: inline-block;
-  width: 75px;
-  height: 75px;
-  background-color: green;
-  margin: 10px;
-  border: 1px solid;
-}
-
-.button {
-  display: inline-block;
-  padding: 8px 10px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
   color: white;
-  background-color: #4cac4f;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 8px #999;
+  text-align: center;
 }
 
-.button:hover { background-color: #3e8e41;}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+#instructions-palette {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: white;
+  width: fit-content;
+  margin: 0 auto 12px;
 }
 
-#pixel-board {
-  display: table;
-  border-spacing: 1px;
-  background-color: black;
-  border: 5px solid black;
+#color-palette {
+  width: fit-content;
+  margin: 0 auto 12px;
 }
 
-.pixel {
-  display: table-cell;
-  background-color: rgb(255, 255, 255);
+.color {
+  display: inline-block;
   width: 40px;
   height: 40px;
   border: 1px solid black;
+  border-radius: 50%;
+}
+
+#buttons {
+  width: fit-content;
+  margin: 0 auto 12px;
+}
+
+#button-random-color {
+  padding: 5px 20px;
+}
+
+#clear-board {
+  padding: 5px 20px;
+}
+
+#instructions-board {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: white;
+  width: fit-content;
+  margin: 0 auto 12px;
+}
+
+#board-menu {
+  width: fit-content;
+  margin: 0 auto 12px;
+}
+
+#board-size {
+  padding: 5px 10px;
+  width: 180px;
+}
+
+#generate-board {
+  padding: 5px 20px;
+}
+
+#pixel-board {
+  width: fit-content;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: block;
+}
+
+.pixel-line {
+  display: flex;
+}
+
+.pixel {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(38, 14, 47);
+  margin: 8px;
+}
+
+footer p {
+  color: rgb(255, 18, 79);
+  background-color: rgb(254, 117, 254);
+  height: 22px;
+  font-weight: 800;
+  font-size: 18px;
 }

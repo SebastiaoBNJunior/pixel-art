@@ -1,90 +1,181 @@
-function testandoPintarCor(){
-     const colorido4 = document.querySelector('#corUm');
-     const colorido1 = document.querySelector('#corDois');
-     const colorido2 = document.querySelector('#corTres');
-     const colorido3 = document.querySelector('#corQuatro');
-     colorido1.style.backgroundColor = 'red';
-     colorido2.style.backgroundColor = 'blue';
-     colorido3.style.backgroundColor = 'green';
-     colorido4.style.backgroundColor = 'black';
- } 
- window.addEventListener('load', testandoPintarCor);
+// Constants and variables used
+const paletteItens = document.querySelectorAll('.color');
+const randomColorButton = document.getElementById('button-random-color');
+const clearButton = document.getElementById('clear-board');
+const inputBoard = document.getElementById('board-size');
+const vqvButton = document.getElementById('generate-board');
+const pixelBoard = document.getElementById('pixel-board');
+const blackSelected = document.getElementById('black');
+let selectedColor = ' rgb(0,0,0)';
 
-const buttonRandomColor = document.querySelector('#button-random-color');
+// getRandomColor function
+// Objective: Generate random colors for the color palette
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
 
-buttonRandomColor.addEventListener('click', function() {
-  const randomColor1 = '#' + Math.floor(Math.random()*16777215).toString(16);
-  const randomColor2 = '#' + Math.floor(Math.random()*16777215).toString(16);
-  const randomColor3 = '#' + Math.floor(Math.random()*16777215).toString(16);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+getRandomColor();
 
-  const colorPalette = [randomColor1, randomColor2, randomColor3];
-localStorage.setItem('colorPalette', colorPalette);
+// createAndSaveRandomPalette function
+// Objective: Create and save random color palette in localStorage
+const createAndSaveRandomPalette = () => {
+  const colorList = [blackSelected.style.backgroundColor];
+  for (let index = 1; index < paletteItens.length; index += 1) {
+    colorList.push(paletteItens[index].style.backgroundColor = getRandomColor());
+  } localStorage.setItem('colorPalette', JSON.stringify(colorList));
+};
 
-  const cor1 = document.querySelector('#corDois');
-  const cor2 = document.querySelector('#corTres');
-  const cor3 = document.querySelector('#corQuatro');
+// randomColorButton element
+// Objective: Change the colors in the palette randomly
+randomColorButton.addEventListener('click', createAndSaveRandomPalette);
 
-  cor1.style.backgroundColor = randomColor1;
-  cor2.style.backgroundColor = randomColor2;
-  cor3.style.backgroundColor = randomColor3;
-});
+// rescuePreviousColorPalette function
+// Objective: Retrieve palette colors saved in localStorage
+function rescuePreviousColorPalette() {
+  const recovereColorPalette = JSON.parse(localStorage.getItem('colorPalette'));
 
-function updateColorPalette() {
-  const colorPalette = localStorage.getItem('colorPalette');
-  if (colorPalette) {
-    const colors = colorPalette.split(',');
-    const cor1 = document.querySelector('#corDois');
-    const cor2 = document.querySelector('#corTres');
-    const cor3 = document.querySelector('#corQuatro');
-    cor1.style.backgroundColor = colors[0];
-    cor2.style.backgroundColor = colors[1];
-    cor3.style.backgroundColor = colors[2];
+  if (recovereColorPalette != null && recovereColorPalette !== '[]') {
+    for (let index = 1; index < recovereColorPalette.length; index += 1) {
+      paletteItens[index].style.backgroundColor = recovereColorPalette[index];
+    }
+  } else {
+    createAndSaveRandomPalette();
   }
 }
-window.addEventListener('load', updateColorPalette);
 
-document.querySelector('#corUm').classList.add('selected');
-
-//requisito 9
-const paletaCores = document.querySelectorAll('.color');
-paletaCores.forEach((cor) => {
-  cor.addEventListener('click', () => {
-    paletaCores.forEach((c) => {
-      c.classList.remove('selected');
-    });
-    cor.classList.add('selected');
-  });
-});
-//requisito 10
-function setPixelColour(pixel) {
-  pixel.style.backgroundColor = document.querySelector('.selected').style.backgroundColor;
-}
-//requisito 11
-function buttonClearColor() {
- const buttonClean = document.querySelectorAll('.pixel');
-   for( i = 0; i < buttonClean.length; i++){
-    buttonClean[i].style.backgroundColor = 'white';
-  }
-}
-//requisito 12
-function savePixelBoard() {
-  const pixelBoard = [];
-  const pixels = document.querySelectorAll('.pixel');
-  for (let i = 0; i < pixels.length; i++) {
-    pixelBoard.push(pixels[i].style.backgroundColor);
-  }
-  localStorage.setItem('pixelBoard', JSON.stringify(pixelBoard));
-}
-
-function restorePixelBoard() {
-  const pixelBoard = JSON.parse(localStorage.getItem('pixelBoard'));
-  if (pixelBoard) {
-    const pixels = document.querySelectorAll('.pixel');
-    for (let i = 0; i < pixels.length; i++) {
-      pixels[i].style.backgroundColor = pixelBoard[i];
+// generateBoard function
+// Objective: Generate dynamic pixel frame
+function generateBoard(size) {
+  if (size) {
+    const newSize = size;
+    for (let index = 0; index < newSize; index += 1) {
+      const divLine = document.createElement('div');
+      divLine.className = 'pixel-line';
+      pixelBoard.appendChild(divLine);
+      for (let i = 0; i < newSize; i += 1) {
+        const pixel = document.createElement('div');
+        pixel.className = 'pixel';
+        divLine.appendChild(pixel);
+      }
     }
   }
 }
-window.addEventListener('beforeunload', savePixelBoard);
-window.addEventListener('load', restorePixelBoard);
+generateBoard(5); // Initial pixel frame 5 x 5
 
+// deleteBoard function
+// Objective: Remove initial 5 x 5 pixel frame
+function deleteBoard() {
+  for (let index = pixelBoard.childNodes.length - 1; index >= 0; index -= 1) {
+    pixelBoard.removeChild(pixelBoard.childNodes[index]);
+  }
+}
+
+// Anonymous function
+// Goals:
+// 1 - Change class between clicked paletteItems
+// 2 - Transfer backgroundcolor to the clicked pixel according to the clicked paletteItem
+
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('color')) {
+    if (event.button === 0) {
+      document.querySelector('.selected').classList.remove('selected');
+      event.target.classList.add('selected');
+      selectedColor = event.target.style.backgroundColor;
+    }
+  }
+  if (event.target.classList.contains('pixel')) {
+    if (event.button === !0) {
+      event.target.style.backgroundColor = 'white';
+    } else {
+      event.target.style.backgroundColor = selectedColor;
+      saveColorSequence();
+    }
+  }
+});
+
+// saveColorSequence function
+// Objective: Save sequence of colors used to color the pixel frame
+function saveColorSequence() {
+  const pixel = document.querySelectorAll('.pixel');
+  const colorsUsed = [];
+  for (let index = 0; index < pixel.length; index += 1) {
+    const pixelColor = pixel[index].style.backgroundColor;
+    colorsUsed.push(pixelColor);
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(colorsUsed));
+}
+
+// clear function
+// Objective: Transfer backgroundcolor white to all pixels
+function clear() {
+  const pixels = document.querySelectorAll('.pixel');
+
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].style.backgroundColor = 'white';
+  }
+}
+
+// clearButton element
+// Objective: "Clear" all pixels
+clearButton.addEventListener('click', clear);
+
+// generateCustomBoard function
+// Objective: Generate dynamic table customized by the user
+function generateCustomBoard(size) {
+  if (size) {
+    let newSize = size;
+    deleteBoard();
+
+    if (size < 0) {
+      alert('Não são permitidos valores menores que zero, digite novamente.');
+    } if (size < 5) {
+      newSize = 5;
+      localStorage.setItem('boardSize', JSON.stringify(5));
+    } if (size > 50) {
+      newSize = 50;
+      localStorage.setItem('boardSize', JSON.stringify(50));
+    } generateBoard(newSize);
+      localStorage.setItem('boardSize', JSON.stringify(newSize));
+  } else {
+    alert('Board inválido!');
+  }
+}
+
+// reorganizeBoard function
+// Objective: Rearrange pixel frame according to the size requested by the user
+function reorganizeBoard() {
+  generateCustomBoard(inputBoard.value);
+}
+
+// vqvButton element
+// Objective: Generate a frame according to the size requested by the user
+vqvButton.addEventListener('click', reorganizeBoard);
+
+// rescuePreviousPaintedBoard function
+// Objective: Rescue painted pixels saved in localStorage (color sequence)
+function rescuePreviousPaintedBoard() {
+  const pixel = document.querySelectorAll('.pixel');
+
+  if (localStorage.getItem('pixelBoard')) {
+    const recoverePaintedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
+    for (let index = 0; index < pixel.length; index += 1) {
+      pixel[index].style.backgroundColor = recoverePaintedBoard[index];
+    }
+  }
+}
+
+function rescuePreviousSize() {
+  let recovereSize = JSON.parse(localStorage.getItem('boardSize'));
+  generateCustomBoard(recovereSize)
+}
+
+//Window.onload
+// Objective: Trigger rescue of saved information when reloading page
+window.onload = () => {
+  rescuePreviousColorPalette();
+  rescuePreviousSize();
+  rescuePreviousPaintedBoard();
+};
