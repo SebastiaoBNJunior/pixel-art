@@ -1,5 +1,5 @@
 <div align="center">
-  <h2>🎨 Project Pixels Art 🎨</h2>
+  <h1>🎨 Project Pixels Art</h1>
 </div>
 
 My third project produced while I was studying JS at Trybe Programming School.
