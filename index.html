@@ -8,18 +8,23 @@
     <title>Paleta de Cores</title>
 </head>
 <body>
-    <h1 id="title">- Paleta de Cores- </h1>
-    <div id="color-palette">
+   <div class="boxcenter">
+    <header>
+      <h1 id="title">- Paleta de Cores- </h1>
+      <h2 id='headerParagraph'>CRIE SUA PIXEL ART</h2>
+    </header>
+    <main>
+      <div id="color-palette">
         <div class="color" id="corUm"></div>
         <div class="color" id="corDois"></div>
         <div class="color" id="corTres"></div>
         <div class="color" id="corQuatro"></div>
-    </div>
+      </div>
     <br></br>
-    <div>
+      <div>
         <button id="button-random-color" class="button">Cores aleatórias</button>
         <button id="clear-board" class="button" onclick="buttonClearColor()">Limpar</button>
-    </div>
+      </div>
     <br></br>
     <div>
         <button id="generate-board" class="button">VQV</button>
@@ -66,6 +71,7 @@
             <div class="pixel" onclick="setPixelColour(this)"></div>
         </div>
     </div>
+    </main>
     <div>
         <footer class="footer">
             <div class="content has-text-centered">
@@ -73,6 +79,7 @@
             </div>
           </footer>
     </div>
+</div>
 </body>
 <script src="script.js"></script>
 </html>
