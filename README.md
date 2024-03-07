@@ -54,8 +54,11 @@ _Give me feedbacks, I'm open to new ideas_ 😉
 
 </details>
 
-<p align="center">
+## 💻 Home Page
+
+![texto](backgroundanimated.gif)
+<!-- <p align="center">
   <img
     src="https://media.discordapp.net/attachments/1062029691860566078/1070676625664004106/pixels-art.gif"
     alt="result-gif" height="380" style="border-radius:50px;">
-</p>
+</p> -->
