@@ -11,7 +11,7 @@ HTML, CSS, DOM, Events in JavaScript, Manipulate objects in localStorage
 
 <!-- Regular deadline: November 16, 2022 at 2:00 pm -->
 
-## 👨‍💻 Linguagem e Tecnologias utilizadas
+## 👨‍💻 Language and Technologies used
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
@@ -56,7 +56,7 @@ _Give me feedbacks, I'm open to new ideas_ 😉
 
 ## 💻 Home Page
 
-![texto](backgroundanimated.gif)
+![homepage](homepage.png)
 <!-- <p align="center">
   <img
     src="https://media.discordapp.net/attachments/1062029691860566078/1070676625664004106/pixels-art.gif"
