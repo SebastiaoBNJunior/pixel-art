@@ -1,4 +1,6 @@
-## 🎨 Project Pixels Art 🎨
+<div align="center">
+  <h2>🎨 Project Pixels Art 🎨</h2>
+</div>
 
 My third project produced while I was studying JS at Trybe Programming School.
 
