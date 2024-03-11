@@ -22,9 +22,9 @@ HTML, CSS, DOM, Events in JavaScript, Manipulate objects in localStorage
   <summary><strong>🏗 Project structure</strong></summary><br />
 
 Built files:
-`index.html`
-`style.css`
-`script.js`
+📁 index.html
+📁 style.css
+📁 script.js
 
 Obs.: The image in the background isn't mine.
 
